@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Stimmungslicht</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link href="./resources/ratchet/css/ratchet.css" rel="stylesheet">
+
+        <style type="text/css">
+
+            .colorpicker
+            {
+                background-color: #222222;
+                color: #FFFFFF;
+            }
+
+            #picker
+            {
+                border: 0;
+                cursor: crosshair;
+                margin: 10px;
+            }
+
+            .preview
+            {
+                background-color: #222222;
+                border: 10px solid #222222;
+                height: 60px;
+            }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <header class="bar bar-nav">
+            <a class="icon icon-left-nav pull-left" href="index.html" data-transition="slide-out"></a>
+            <h1 class="title">Stimmungslicht</h1>
+        </header>
+
+        <div class="content">
+            <div class="content-padded">
+                <div class="colorpicker">
+                    <canvas id="picker" width="300" height="300"></canvas>
+                </div>
+
+                <div class="preview"></div>
+            </div>
+        </div>
+
+        <script src="./resources/jquery/jquery.js"></script>
+
+        <script src="./resources/configuration.js"></script>
+        <script src="./resources/websocket_connection.js"></script>
+
+        <script type="text/javascript">
+
+            $(function()
+            {
+                var canvas = document.getElementById('picker');
+                var canvasContext = canvas.getContext('2d');
+
+                var backgroundImage = new Image();
+
+                backgroundImage.onload = function()
+                {
+                    canvasContext.drawImage(backgroundImage, 0, 0, backgroundImage.width, backgroundImage.height);
+                }
+
+                backgroundImage.src = 'resources/colorwheel.png';
+
+                var pixel;
+
+                $('#picker').mousemove(function(e)
+                {
+                    // Get coordinates of current position
+                    var canvasOffset = $(canvas).offset();
+                    var canvasX = Math.floor(e.pageX - canvasOffset.left);
+                    var canvasY = Math.floor(e.pageY - canvasOffset.top);
+
+                    // Get current pixel
+                    var imageData = canvasContext.getImageData(canvasX, canvasY, 1, 1);
+                    pixel = imageData.data;
+
+                    // Update preview color
+                    var pixelColor = 'rgb(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ')';
+                    $('.preview').css('backgroundColor', pixelColor);
+                });
+
+                $('#picker').click(function(e)
+                {
+                    var jsonMessage = JSON.stringify({
+                        module: 'singlecolor',
+                        payload:
+                        {
+                            r: pixel[0],
+                            g: pixel[1],
+                            b: pixel[2] 
+                        }
+                    });
+
+                    sendWebsocketMessage(jsonMessage);
+                });
+            });
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,12 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: PyFingerprint
+Upstream-Contact: Bastian Raschke <bastian.raschke@posteo.de>
+Source: https://sicherheitskritisch.de
+
+Files: *
+Copyright: Copyright (C) 2015 Bastian Raschke <bastian.raschke@posteo.de>
+License: D-FSL
+ This Program may be used by anyone in accordance with the terms of the German
+ Free Software License.
+ .
+ The License may be obtained under <http://www.d-fsl.org>.

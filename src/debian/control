@@ -1,0 +1,22 @@
+Source: vibelight-gateway
+Maintainer: Bastian Raschke <bastian.raschke@posteo.de>
+Section: python
+Priority: optional
+Standards-Version: 3.9.6
+Build-Depends:
+ debhelper (>= 9),
+ python (>= 2.7),
+ python-setuptools
+X-Python-Version: >= 2.7
+Homepage: https://sicherheitskritisch.de
+
+Package: vibelight-gateway
+Architecture: all
+Depends:
+ python (>= 2.7),
+ python-autobahn,
+ ${python:Depends},
+ ${shlibs:Depends},
+ ${misc:Depends}
+Description: TODO
+ TODO

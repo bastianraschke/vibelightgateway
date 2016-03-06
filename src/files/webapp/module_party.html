@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Partymodus</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link href="./resources/ratchet/css/ratchet.css" rel="stylesheet">
+        
+    </head>
+    <body>
+
+        <header class="bar bar-nav">
+          <a class="icon icon-left-nav pull-left" href="index.html" data-transition="slide-out"></a>
+          <h1 class="title">Partymodus</h1>
+        </header>
+
+        <div class="content">
+
+            <div class="content-padded">
+
+                Geschwindigkeit (BPM):
+                <input id="speed" type="range" min="60" max="200" value="180" style="width: 100%; margin-bottom: 1em;" onchange="document.getElementById('bpm').innerHTML=this.value;" />
+                <p id="bpm"></p>
+
+                <button id="start" class="btn btn-positive btn-block">Effekt starten</button>
+                <button id="stop" class="btn btn-negative btn-block">Effekt stoppen</button>
+            </div>
+
+        </div>
+
+        <script src="./resources/jquery/jquery.js"></script>
+
+        <script src="./resources/configuration.js"></script>
+        <script src="./resources/websocket_connection.js"></script>
+
+        <script type="text/javascript">
+
+            $(function()
+            {
+                $('#start').click(function(e)
+                {
+                    var jsonMessage = JSON.stringify({
+                        module: 'party',
+                        payload:
+                        {
+                            command: 'start',
+                            speed: $('#speed').val()
+                        }
+                    });
+
+                    sendWebsocketMessage(jsonMessage);
+                });
+
+                $('#stop').click(function(e)
+                {
+                    var jsonMessage = JSON.stringify({
+                        module: 'party',
+                        payload:
+                        {
+                            command: 'stop'
+                        }
+                    });
+
+                    sendWebsocketMessage(jsonMessage);
+                });
+            });
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Regenbogeneffekt</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link href="./resources/ratchet/css/ratchet.css" rel="stylesheet">
+        
+    </head>
+    <body>
+
+        <header class="bar bar-nav">
+          <a class="icon icon-left-nav pull-left" href="index.html" data-transition="slide-out"></a>
+          <h1 class="title">Regenbogeneffekt</h1>
+        </header>
+
+        <div class="content">
+
+            <div class="content-padded">
+                <button id="start" class="btn btn-positive btn-block">Effekt starten</button>
+                <button id="stop" class="btn btn-negative btn-block">Effekt stoppen</button>
+            </div>
+
+        </div>
+
+        <script src="./resources/jquery/jquery.js"></script>
+
+        <script src="./resources/configuration.js"></script>
+        <script src="./resources/websocket_connection.js"></script>
+
+        <script type="text/javascript">
+
+            $(function()
+            {
+                $('#start').click(function(e)
+                {
+                    var jsonMessage = JSON.stringify({
+                        module: 'rainbow',
+                        payload:
+                        {
+                            command: 'start'
+                        }
+                    });
+
+                    sendWebsocketMessage(jsonMessage);
+                });
+
+                $('#stop').click(function(e)
+                {
+                    var jsonMessage = JSON.stringify({
+                        module: 'rainbow',
+                        payload:
+                        {
+                            command: 'stop'
+                        }
+                    });
+
+                    sendWebsocketMessage(jsonMessage);
+                });
+            });
+
+        </script>
+
+    </body>
+</html>

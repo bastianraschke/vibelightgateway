@@ -1,0 +1,11 @@
+[Unit]
+Description=VibeLight Gateway daemon
+
+[Service]
+ExecStart=/usr/bin/python /usr/sbin/vibelightgatewayd.py
+User=root
+Group=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
