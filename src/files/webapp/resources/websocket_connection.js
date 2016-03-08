@@ -3,42 +3,44 @@ var isGatewaySocketOpen = false;
 
 $(window).load(function() {
 
-    if (window.location.protocol === "https:")
+    var currentHost = window.location.host;
+
+    if ( window.location.protocol == 'https:' )
     {
-        gatewaySocket = new WebSocket(serverAdressSecure);
+        var serverAdress = 'wss://' + currentHost + '/websocket/';
     }
     else
     {
-        gatewaySocket = new WebSocket(serverAdress);
+        var serverAdress = 'ws://' + currentHost + '/websocket/';
     }
+
+    gatewaySocket = new WebSocket(serverAdress);
 
     gatewaySocket.onopen = function()
     {
-        console.log("Connection opened.");
+        console.log('Connection opened.');
         isGatewaySocketOpen = true;
     }
 
-    gatewaySocket.onmessage = function(e)
+    gatewaySocket.onmessage = function(event)
     {
-        response = e.data
-        console.log("Message received: " + response);
+        response = event.data
+        console.log('Message received: ' + response);
 
-        if (typeof response == "string")
+        /*
+        if (typeof response == 'string')
         {
-            // if (response == "OK")
-            // {
-
-            // }
-            // else
-            // {
-            //     alert("Fehler aufgetreten: " + response)
-            // }
+            if (response != 'OK')
+            {
+                alert('Fehler aufgetreten: ' + response)
+            }
         }
+        */
     }
 
-    gatewaySocket.onclose = function(e)
+    gatewaySocket.onclose = function(event)
     {
-        console.log("Connection closed.");
+        console.log('Connection closed.');
 
         gatewaySocket = null;
         isGatewaySocketOpen = false;

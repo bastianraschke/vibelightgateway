@@ -15,7 +15,6 @@
             .colorpicker
             {
                 background-color: #222222;
-                color: #FFFFFF;
             }
 
             #picker
@@ -42,19 +41,16 @@
             <h1 class="title">Stimmungslicht</h1>
         </header>
 
-        <div class="content">
-            <div class="content-padded">
-                <div class="colorpicker">
-                    <canvas id="picker" width="300" height="300"></canvas>
-                </div>
-
-                <div class="preview"></div>
+        <div class="content" style="height: 100%;">
+            <div class="colorpicker">
+                <canvas id="picker" width="300" height="300"></canvas>
             </div>
+
+            <div class="preview"></div>
+         
         </div>
 
         <script src="./resources/jquery/jquery.js"></script>
-
-        <script src="./resources/configuration.js"></script>
         <script src="./resources/websocket_connection.js"></script>
 
         <script type="text/javascript">

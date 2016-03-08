@@ -9,7 +9,23 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
         <link href="./resources/ratchet/css/ratchet.css" rel="stylesheet">
-        
+
+        <style type="text/css">
+
+            #bpmselector
+            {
+                margin-bottom: 0.5em;
+                width: 100%;
+            }
+
+            #bpm
+            {
+                font-size: 1.2em;
+                margin-bottom: 1em;
+            }
+
+        </style>
+
     </head>
     <body>
 
@@ -21,9 +37,8 @@
         <div class="content">
 
             <div class="content-padded">
-
                 Geschwindigkeit (BPM):
-                <input id="speed" type="range" min="60" max="200" value="180" style="width: 100%; margin-bottom: 1em;" onchange="document.getElementById('bpm').innerHTML=this.value;" />
+                <input id="bpmselector" type="range" min="60" max="200" value="160" />
                 <p id="bpm"></p>
 
                 <button id="start" class="btn btn-positive btn-block">Effekt starten</button>
@@ -33,14 +48,28 @@
         </div>
 
         <script src="./resources/jquery/jquery.js"></script>
-
-        <script src="./resources/configuration.js"></script>
         <script src="./resources/websocket_connection.js"></script>
 
         <script type="text/javascript">
 
+            function updateBPMValue()
+            {
+                $("#bpm").text($('#bpmselector').val());
+            }
+
+            $(document).ready(function(e)
+            {
+                // Inital trigger selector to show inital value
+                updateBPMValue();
+            });
+
             $(function()
             {
+                $('#bpmselector').on('input', function()
+                {
+                    updateBPMValue();
+                });
+
                 $('#start').click(function(e)
                 {
                     var jsonMessage = JSON.stringify({
@@ -48,7 +77,7 @@
                         payload:
                         {
                             command: 'start',
-                            speed: $('#speed').val()
+                            speed: $('#bpmselector').val()
                         }
                     });
 
