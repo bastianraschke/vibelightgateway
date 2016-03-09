@@ -18,5 +18,7 @@ Depends:
  ${python:Depends},
  ${shlibs:Depends},
  ${misc:Depends}
-Description: TODO
- TODO
+Description: Ambiance light system (using WS2812B LED) for the Raspberry Pi.
+ The VibeLight Gateway transforms your Raspberry Pi to a cool ambiance light
+ gateway. It allows to control WS2812B RGB-LED with your smartphone, tablet
+ computer or normal desktop.
