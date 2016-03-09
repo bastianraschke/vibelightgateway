@@ -20,7 +20,7 @@ PACKAGE_VERSION = __import__('vibelightgateway').__version__
 setup(
     name                = 'vibelightgateway',
     version             = PACKAGE_VERSION, ## Never forget to change Debian changelog file as well!
-    description         = 'TODO',
+    description         = 'Ambiance light system (using WS2812B LED) for the Raspberry Pi.',
     author              = 'Bastian Raschke',
     author_email        = 'bastian.raschke@posteo.de',
     url                 = 'https://sicherheitskritisch.de',

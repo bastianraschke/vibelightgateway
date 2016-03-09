@@ -1,6 +1,6 @@
 # VibeLight Gateway
 
-The [VibeLight Gateway](https://sicherheitskritisch.de/2016/03/cooles-rgb-led-stimmungslicht-diy-steuerbar-mit-smartphone-app/) transforms your Raspberry Pi to a cool ambiance light gateway. It allows to control WS2812B RGB-LEDs with your smartphone, tablet computer or normal desktop. By default the system provides some cool effects like: 
+The [VibeLight Gateway](https://sicherheitskritisch.de/2016/03/cooles-rgb-led-stimmungslicht-diy-steuerbar-mit-smartphone-app/) transforms your Raspberry Pi to a cool ambiance light gateway. It allows to control WS2812B RGB-LED with your smartphone, tablet computer or normal desktop. By default the system provides some cool effects like: 
 
 - Ambiance light (choose between 16 million colors)
 - Rainbow effect
@@ -10,11 +10,11 @@ The system has a quite simple architecture (only HTML and Python), you can exten
 
 The effects can be easily controlled with your smartphone:
 
-![VibeLight Gateway web app](https://sicherheitskritisch.de/images/vibelight-gateway-webapp-small.png)
+![VibeLight Gateway web app](https://sicherheitskritisch.de/images/vibelight-gateway-webapp-overview.png)
 
 The party mode with adjustable speed:
 
-![VibeLight Gateway party mode](https://sicherheitskritisch.de/images/vibelight-gateway-party-mode-small.gif)
+![VibeLight Gateway party mode](https://sicherheitskritisch.de/images/vibelight-gateway-party-mode-demo.gif)
 
 ## Package building
 
@@ -23,7 +23,7 @@ The party mode with adjustable speed:
 First install the packages for building:
 
     ~$ sudo apt-get update
-    ~$ sudo apt-get install devscripts dh-systemd
+    ~$ sudo apt-get install devscripts dh-systemd python-setuptools
 
 Than clone this repository:
 
