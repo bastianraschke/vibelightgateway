@@ -92,10 +92,10 @@ class VibeLightGatewayProtocol(WebSocketServerProtocol):
 
         try:
             ## Try to parse the received JSON message
-            parsedRequetData = json.loads(requestData)
+            parsedRequestData = json.loads(requestData)
 
-            requestModule = parsedRequetData['module']
-            requestPayload = parsedRequetData['payload']
+            requestModule = parsedRequestData['module']
+            requestPayload = parsedRequestData['payload']
 
             ## Execute requested module only if allowed
             if ( requestModule in ENABLED_MODULES ):
