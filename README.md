@@ -1,6 +1,6 @@
 # VibeLight Gateway
 
-The [VibeLight Gateway](https://sicherheitskritisch.de/2016/03/cooles-rgb-led-stimmungslicht-diy-steuerbar-mit-smartphone-app/) transforms your Raspberry Pi to a cool ambiance light gateway. It allows to control WS2812B RGB-LED with your smartphone, tablet computer or normal desktop. By default the system provides some cool effects like: 
+The [VibeLight Gateway](https://sicherheitskritisch.de/2016/03/cooles-rgb-led-stimmungslicht-diy-steuerbar-mit-smartphone-app/) transforms your Raspberry Pi to a cool ambiance light gateway. It allows to control WS2812B RGB-LED with your smartphone, tablet computer or normal desktop. By default the system provides some cool effects like:
 
 - Ambiance light (choose between 16 million colors)
 - Rainbow effect
